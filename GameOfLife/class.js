@@ -239,9 +239,10 @@ class Predator extends LivingCreatore {
         }
       }
     } else {
-      this.move();
+      this.move()
     }
-  }
+    }
+  
   mul() {
     this.multiply++;
     var emptyCells = this.chooseCell(0);
@@ -256,8 +257,7 @@ class Predator extends LivingCreatore {
       predatorArr.push(newGrass);
       this.multiply = 0;
     }
-  }
-  die() {
+  die() 
     matrix[this.y][this.x] = 0;
     for (var i in predatorArr) {
       if (this.x == predatorArr[i].x && this.y == predatorArr[i].y) {
@@ -266,11 +266,9 @@ class Predator extends LivingCreatore {
       }
     }
   }
-}
+
 
 class Apple extends LivingCreatore {
-
-  
 
   mul() {
     this.multiply++;
@@ -303,6 +301,44 @@ class Mushroom extends LivingCreatore {
 
       var newMushroom = new Mushroom(newX, newY);
       mushroomArr.push(newMushroom);
+      this.multiply = 0;
+    }
+  }
+}
+
+
+class Cucumbr extends LivingCreatore {
+
+  mul() {
+    this.multiply++;
+    var emptyCells = this.chooseCell(0);
+    var newCell = random(emptyCells);
+
+    if (newCell && this.multiply >= 8) {
+      var newX = newCell[0];
+      var newY = newCell[1];
+      matrix[newY][newX] = 1;
+
+      var newCucumbr = new Cucumbr(newX, newY);
+      cucumbrArr.push(newCucumbr);
+      this.multiply = 0;
+    }
+  }
+}
+class Rose extends LivingCreatore {
+
+  mul() {
+    this.multiply++;
+    var emptyCells = this.chooseCell(0);
+    var newCell = random(emptyCells);
+
+    if (newCell && this.multiply >= 8) {
+      var newX = newCell[0];
+      var newY = newCell[1];
+      matrix[newY][newX] = 1;
+
+      var newRose = new rose(newX, newY);
+  roseArr.push(newRose);
       this.multiply = 0;
     }
   }
